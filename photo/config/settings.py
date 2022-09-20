@@ -35,7 +35,6 @@ def get_secret(setting, secrets=secrets):
         error_msg = "set the {0} enviroment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
     
-    
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -47,6 +46,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #기본앱
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -54,8 +54,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     
-    # 생성된 앱 기록
-    'myapp',
+    'photo',
 ]
 
 MIDDLEWARE = [
@@ -116,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "ko-kr"
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "Asia/Seoul"
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
