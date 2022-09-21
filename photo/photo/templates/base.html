@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      <!-- 각 템플릿마다 적용되는 타이틀 영역 -->
+      {% block title %}{% endblock title %}
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- 각 템플릿에서 추가되는 css 영역-->
+    {% block style %}{% endblock style %}
+    <style>
+      .photo div:nth-child(2) img {
+        width: 300px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      {% block content %}{% endblock content %}
+    </div>
+  </body>
+
+</html>
