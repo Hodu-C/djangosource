@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>remove</title>
+{% endblock title %}
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div>
+      <button type="submit" class="btn btn-primary">
+        삭제
+      </button>
+    </div>
+  </form>
+{% endblock content %}
