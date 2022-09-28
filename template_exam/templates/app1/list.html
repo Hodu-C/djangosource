@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h1>App1</h1>
+  <div class=""><img src="{% static 'img/목도리.jpg' %}" alt="목도리"></div>
+  <div>
+    <a href="{% url 'app1:detail' %}" class="btn btn-success">이동하기</a>
+  </div>
+{% endblock content %}
