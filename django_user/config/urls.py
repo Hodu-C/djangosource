@@ -27,5 +27,5 @@ urlpatterns = [
     path("user/",include("user.urls")),
 
     # http://127.0.0.1:8000/accounts/
-    # path("accounts/",include("django.contrib.auth.urls"))
+    path("accounts/",include("django.contrib.auth.urls"))
 ]
