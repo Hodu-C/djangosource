@@ -146,3 +146,7 @@ AUTH_USER_MODEL = 'user.User'
 LOGIN_REDIRECT_URL = "/"
 #로그아웃 이후 가야할 곳 강제로 지정
 LOGOUT_REDIRECT_URL = "/"
+
+#첨부파일
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

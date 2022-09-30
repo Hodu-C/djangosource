@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from blog import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,4 +29,4 @@ urlpatterns = [
     #로그인, 로그아웃 장고 이용
     path("accounts/", include("django.contrib.auth.urls")),
     
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
