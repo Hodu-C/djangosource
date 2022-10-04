@@ -1,4 +1,5 @@
 {% load static %}
+{% load social_share %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +75,13 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
             <!--이후 추가-->
-            {% block social %}{% endblock social %}
+            {% block social %}
+              <ul class="list-inline">
+                <li class="list-inline-item">{% post_to_twitter "[New Post] {{post.title}}" object_or_url '<span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span>'%}</li>
+                <li class="list-inline-item">{% post_to_facebook object_or_url '<span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-facebook fa-stack-1x fa-inverse"></i></span>'%}</li>
+                <li class="list-inline-item">{% post_to_telegram "[New Post] {{object.title}}" object_or_url '<span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-telegram fa-stack-1x fa-inverse"></i></span>'%}</li>
+              </ul>
+            {% endblock social %}
             <div class="small text-center text-muted fst-italic">Copyright &copy; Alpaco Blog 2022</div>
           </div>
         </div>

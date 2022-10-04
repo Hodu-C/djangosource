@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "blog",
     "user",
 ]
+INSTALLED_APPS += ['django_social_share', 'taggit']
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

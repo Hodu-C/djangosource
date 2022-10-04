@@ -1,6 +1,8 @@
 from django.db import models
 from user.models import User
 
+from taggit.managers import TaggableManager
+
 # Create your models here.
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -8,13 +10,16 @@ class Post(models.Model):
     content = models.TextField()
     image = models.ImageField(blank=True, null=True)
     
-    #좋아요 - 다대다 연결
-    likes = models.ManyToManyField(User, related_name="likes", blank=True)
-    
     # auto_now_add : 처음 생성됐을 때를 확인
     # auto_now - 수정일자 수정 될때마다 갱신
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+    
+    #좋아요 - 다대다 연결
+    likes = models.ManyToManyField(User, related_name="likes", blank=True)
+    
+    # tag
+    tags = TaggableManager(blank=True)
     
     def __str__(self) -> str:
         return self.title
