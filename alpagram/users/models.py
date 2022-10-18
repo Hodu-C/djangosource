@@ -1,15 +1,11 @@
 from django.db import models
 
-from django.contrib.auth.models import (
-    AbstractBaseUser,
-    BaseUserManager,
-    PermissionsMixin,
-)
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-# 이메일, 성명, 사용자이름, 비밀번호 컬럼으로 User 생성
 
+# 이메일, 성명, 사용자이름, 비밀번호 컬럼으로 User 생성
 
 # Manager
 class AlpagramManager(BaseUserManager):
@@ -18,28 +14,18 @@ class AlpagramManager(BaseUserManager):
         if not email:
             raise ValueError("The given email must be set")
 
-        email = self.normalize_email(email)
-        user = self.model(email=email,
-                          name=name,
-                          nickname=nickname,
-                          **extra_fields)
+        email = self.normalize_email(email)                       
+        user = self.model(email=email, name=name, nickname=nickname,**extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_user(self,
-                    email,
-                    name,
-                    nickname,
-                    password=None,
-                    **extra_fields):
+    def create_user(self, email, name, nickname, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
-        return self._create_user(email, name, nickname, password,
-                                 **extra_fields)
+        return self._create_user(email, name, nickname, password, **extra_fields)
 
-    def create_superuser(self, email, name, nickname, password,
-                         **extra_fields):
+    def create_superuser(self, email, name, nickname, password, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
 
@@ -48,8 +34,7 @@ class AlpagramManager(BaseUserManager):
         if extra_fields.get("is_superuser") is not True:
             raise ValueError("Superuser must have is_superuser=True.")
 
-        return self._create_user(email, name, nickname, password,
-                                 **extra_fields)
+        return self._create_user(email, name, nickname, password, **extra_fields)
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -66,22 +51,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = AlpagramManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["name", "nickname"]
+    REQUIRED_FIELDS = ["name","nickname"]
 
     class Meta:
         db_table = "alpagram_user"
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(CustomUser,
-                                on_delete=models.CASCADE,
-                                verbose_name="회원")
-    image = models.ImageField(upload_to="profile/",
-                              default="profile/default.png")
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, verbose_name="회원")
+    image = models.ImageField(upload_to = "profile/", default="profile/default.png")
 
     class Meta:
         db_table = "alpagram_user_profile"
-
 
 @receiver(post_save, sender=CustomUser)
 def create_user_profile(sender, instance, created, **kwargs):

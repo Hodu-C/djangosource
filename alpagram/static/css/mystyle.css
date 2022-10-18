@@ -2,6 +2,7 @@ body {
   padding-top: 5rem;
 }
 
+/* navbar */
 .navbar {
   width: 70%;
 }
@@ -9,10 +10,12 @@ body {
 .top-menu span {
   line-height: 1;
 }
+
 .top-menu .dropdown button {
   border: none;
   background-color: #fff;
 }
+
 .top-menu .dropdown button > img {
   width: 30px;
   height: 30px;
@@ -28,13 +31,13 @@ a:hover {
   color: black;
 }
 
-/*로그인, 회원가입*/
+/* 로그인, 회원가입 */
 .cut-line {
   color: #848587;
   font-size: 13px;
 }
 
-/*회원가입 css*/
+/* 회원가입 */
 .right-second {
   display: none;
 }
@@ -59,15 +62,15 @@ a:link {
 /* profile */
 .profile-image {
   width: 50px;
-  height: 50px;
+  width: 50px;
 }
 
-.profile {
+.profile-change {
   width: 150px;
-  height: 150px;
+  width: 150px;
 }
 
-/* profile-modal */
+/* profile modal */
 .btn-upload {
   font-weight: 500;
   cursor: pointer;
@@ -77,4 +80,22 @@ a:link {
 }
 #file {
   display: none;
+}
+
+textarea.control {
+  display: block;
+  width: 21rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  border: #fff;
+  outline: #fff;
+}
+textarea::placeholder {
+  vertical-align: middle;
+}
+.button {
+  border: none;
+  background-color: white;
+  color: #0096f6;
+  opacity: 0.4;
 }

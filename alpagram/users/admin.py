@@ -1,11 +1,9 @@
 from django.contrib import admin
-from .models import CustomUser, Profile
 
+from .models import CustomUser,Profile
 
-# Register your models here.
 class CustomAdmin(admin.ModelAdmin):
     list_display = ("email", "name", "nickname")
 
-
-admin.site.register(CustomUser, CustomAdmin)
+admin.site.register(CustomUser,CustomAdmin)
 admin.site.register(Profile)

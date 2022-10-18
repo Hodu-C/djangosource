@@ -3,14 +3,15 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="py-4 border-bottom text-center">
-        <span class="h5" id="imageModalLabel">프로필 사진 바꾸기</span>
+        <span class="h5" id="exampleModalLabel">프로필 사진 바꾸기</span>
       </div>
       <div class="pt-3 pb-2 border-bottom text-center">
         <span class="text-primary upload">
           <label for="file">
-            span.btn-upload{프로필 사진 변경}
+            <span class="btn-upload">프로필 사진 변경</span>
           </label>
-          <form action="" method="post" id="image-change">
+          <form method="post" id="image-change">
+            {% csrf_token %}
             <input type="file" name="file" id="file">
           </form>
         </span>

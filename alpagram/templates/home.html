@@ -108,7 +108,7 @@
             </div>
           </div>
 
-          <form action="" method="post" id="register">
+          <form method="post" id="register">
             {% csrf_token %}
             <div class="row mb-1 mx-4">
               <input type="text" name="email" id="email" placeholder="이메일 주소" class="form-control">
@@ -152,7 +152,7 @@
 {% block script %}
   <script>
     $(function () {
-      //register 폼  ajax 전송
+      //register 폼 ajax 전송
       $("#register").on("submit", function (e) {
         //submit 중지
         e.preventDefault();
@@ -161,11 +161,12 @@
         var form = document.getElementById("register");
         console.log(form);
 
-        //FormData = 폼을 쉽게 보내도록 도와주는 객체
+        //FormData : 폼을 쉽게 보내도록 도와주는 객체
         var formData = new FormData(form);
 
+        //폼 전송
         $.ajax({
-          url: "/apis/v1/users/create",
+          url: '/apis/v1/users/create/',
           type: 'post',
           data: formData,
           contentType: false,
@@ -174,20 +175,22 @@
             console.log(response);
             //로그인 페이지 이동
             location.reload();
-
           },
           error: function (req, status, error) {
             console.log(req.responseJSON.message);
+
             if (req.responseJSON.error) {
               $.each(req.responseJSON.message, function (name, err) {
-                err = "<small class='text-danger'>" + err "</small>";
+                err = "<small class='text-danger'>" + err + "</small>";
                 $(form)
                   .find("[name='" + name + "']")
                   .after(err);
               })
             }
+
           }
         })
+
       })
 
       //가입하기 아이콘 클릭 시 회원가입화면 보여주고 로그인 화면 숨기기

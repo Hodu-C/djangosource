@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "contents",
     "users",
     "debug_toolbar",
+    "django.contrib.humanize",  # 단위
 ]
 
 MIDDLEWARE = [
